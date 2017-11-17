@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     setContentView(R.layout.item_layout);
 
     setView();
-    //setToolbar();
+
 
 
   }
@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.item1:
-        Intent intent11 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent11 = new Intent(this, Calculator.class);
         startActivity(intent11);
         break;
       case R.id.item2:
-        Intent intent12 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent12 = new Intent(this, Calculator.class);
         startActivity(intent12);
         break;
       case R.id.item3:
-        Intent intent13 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent13 = new Intent(this, Calculator.class);
         startActivity(intent13);
         break;
     }
@@ -87,63 +87,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   public void onClick(View v) {
     switch (v.getId()) {
       case R.id.food:
-        Intent intent = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent = new Intent(this, Calculator.class);
         startActivity(intent);
         break;
       case R.id.water:
-        Intent intent1 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent1 = new Intent(this, Calculator.class);
         startActivity(intent1);
         break;
       case R.id.internet:
-        Intent intent2 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent2 = new Intent(this, Calculator.class);
         startActivity(intent2);
         break;
       case R.id.drive:
-        Intent intent3 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent3 = new Intent(this, Calculator.class);
         startActivity(intent3);
         break;
       case R.id.wear:
-        Intent intent4 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent4 = new Intent(this, Calculator.class);
         startActivity(intent4);
         break;
       case R.id.thing:
-        Intent intent5 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent5 = new Intent(this, Calculator.class);
         startActivity(intent5);
         break;
       case R.id.education:
-        Intent intent6 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent6 = new Intent(this, Calculator.class);
         startActivity(intent6);
         break;
       case R.id.date:
-        Intent intent7 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent7 = new Intent(this, Calculator.class);
         startActivity(intent7);
         break;
       case R.id.house:
-        Intent intent8 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent8 = new Intent(this, Calculator.class);
         startActivity(intent8);
         break;
       case R.id.tax:
-        Intent intent9 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent9 = new Intent(this, Calculator.class);
         startActivity(intent9);
         break;
       case R.id.other:
-        Intent intent10 = new Intent(this, Calculator.CaluculaterActivity.class);
+        Intent intent10 = new Intent(this, Calculator.class);
         startActivity(intent10);
         break;
     }
   }
 
-//  public boolean setToolbar() {
-//    toolbar = (Toolbar) findViewById(R.id.toolbar);
-//    setSupportActionBar(toolbar);
-//    getSupportActionBar().setTitle("電卓の表示");
-//    toolbar.setNavigationIcon(R.mipmap.ic_launcher);
-//    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        Intent intent = new Intent(CaluculaterActivity.this ,CaluculaterActivity.class);
-//        startActivity(intent);
-//      }
-//    });
 
 }
