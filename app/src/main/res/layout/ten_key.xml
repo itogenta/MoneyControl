@@ -242,7 +242,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="1dp"
-            android:layout_weight="0.505"
+            android:layout_weight="0.2475"
             android:background="?android:attr/colorButtonNormal"
             android:text="0"
             android:textColor="@android:color/black"
@@ -258,6 +258,17 @@
             android:layout_weight="0.2475"
             android:background="?android:attr/colorButtonNormal"
             android:text="."
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+        <Button
+            android:id="@+id/button_ok"
+            style="?attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:layout_weight="0.2475"
+            android:background="?android:attr/colorButtonNormal"
+            android:text="確定"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
