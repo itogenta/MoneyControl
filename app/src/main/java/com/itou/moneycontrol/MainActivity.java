@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent11);
         break;
       case R.id.item2:
-        Intent intent12 = new Intent(this, Calculator.class);
+        Intent intent12 = new Intent(this, DataBaseActivity.class);
         startActivity(intent12);
         break;
       case R.id.item3:

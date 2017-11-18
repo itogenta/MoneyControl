@@ -1,18 +1,24 @@
 package com.itou.moneycontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
 
-public class Calculator extends AppCompatActivity {
+public class Calculator extends AppCompatActivity implements View.OnClickListener {
 
   private EditText editText;
   private int recentOperator = R.id.button_equal;
   private boolean isOperatorKeyPushed;
   private double result;
+  private Toolbar toolbar;
 
   View.OnClickListener buttonNumberListener = new View.OnClickListener() {
     @Override
@@ -88,6 +94,33 @@ public class Calculator extends AppCompatActivity {
   };
 
 
+  //オプションメニューの画面遷移
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu){
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu, menu);
+    return true;
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.item1:
+        Intent intent11 = new Intent(this, Calculator.class);
+        startActivity(intent11);
+        break;
+      case R.id.item2:
+        Intent intent12 = new Intent(this, DataBaseActivity.class);
+        startActivity(intent12);
+        break;
+      case R.id.item3:
+        Intent intent13 = new Intent(this, Calculator.class);
+        startActivity(intent13);
+        break;
+    }
+    return false;
+  }
+
+
 
   double calc(int operator, double value1, double value2) {
     switch (operator) {
@@ -113,16 +146,19 @@ public class Calculator extends AppCompatActivity {
     result = 0.0;
   }
 
+  void setView() {
+    findViewById(R.id.food).setOnClickListener(this);
+    findViewById(R.id.water).setOnClickListener(this);
+    findViewById(R.id.internet).setOnClickListener(this);
+    findViewById(R.id.drive).setOnClickListener(this);
+    findViewById(R.id.wear).setOnClickListener(this);
+    findViewById(R.id.thing).setOnClickListener(this);
+    findViewById(R.id.education).setOnClickListener(this);
+    findViewById(R.id.date).setOnClickListener(this);
+    findViewById(R.id.house).setOnClickListener(this);
+    findViewById(R.id.tax).setOnClickListener(this);
+    findViewById(R.id.other).setOnClickListener(this);
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.calculator_layout);
-
-    editText = (EditText) findViewById(R.id.editText);
-    initValue();
-
-    //0-9 . AC C +/- %
     findViewById(R.id.button_1).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_2).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_3).setOnClickListener(buttonNumberListener);
@@ -145,5 +181,25 @@ public class Calculator extends AppCompatActivity {
     findViewById(R.id.button_sub).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_add).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_equal).setOnClickListener(buttonOperatorListener);
+
+
+  }
+
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.calculator_layout);
+
+    editText = (EditText) findViewById(R.id.editText);
+    initValue();
+    setView();
+
+
+  }
+
+  @Override
+  public void onClick(View v) {
+
   }
 }
