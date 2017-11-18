@@ -137,7 +137,7 @@ public class Calculator extends AppCompatActivity {
     findViewById(R.id.button_clear).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_add_sub).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_percent).setOnClickListener(buttonNumberListener);
-    findViewById(R.id.buttonOk)
+    //findViewById(R.id.buttonOk).setOnClickListener(buttonOperatorListener);
 
     // / * + - =
     findViewById(R.id.button_div).setOnClickListener(buttonOperatorListener);
