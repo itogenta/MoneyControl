@@ -1,6 +1,8 @@
 package com.itou.moneycontrol;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +21,9 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   private boolean isOperatorKeyPushed;
   private double result;
   private Toolbar toolbar;
+  private String category;
+  public Button buttonok;
+  private int price;
 
   View.OnClickListener buttonNumberListener = new View.OnClickListener() {
     @Override
@@ -28,19 +33,18 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
       Button viewButton = (Button) view;
       double value;
 
-      switch(view.getId()){
+      switch (view.getId()) {
         case R.id.button_dot:
-          if(str.indexOf(".") == -1){
+          if (str.indexOf(".") == -1) {
             editText.append(viewButton.getText());
           }
           break;
 
         case R.id.button_clear:
-          button = (Button)findViewById(R.id.button_clear);
-          if(button.getText().equals("AC")){
+          button = (Button) findViewById(R.id.button_clear);
+          if (button.getText().equals("AC")) {
             initValue();
-          }
-          else if(button.getText().equals("C")){
+          } else if (button.getText().equals("C")) {
             button.setText("AC");
             editText.setText("0");
           }
@@ -57,15 +61,14 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
           break;
 
         default:
-          if(str.equals("0")){
+          if (str.equals("0")) {
             editText.setText("");
           }
-          if(isOperatorKeyPushed){
+          if (isOperatorKeyPushed) {
             editText.setText(viewButton.getText());
-            button = (Button)findViewById(R.id.button_clear);
+            button = (Button) findViewById(R.id.button_clear);
             button.setText("C");
-          }
-          else {
+          } else {
             editText.append(viewButton.getText());
           }
           break;
@@ -73,7 +76,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
       isOperatorKeyPushed = false;
     }
   };
-
 
 
   View.OnClickListener buttonOperatorListener = new View.OnClickListener() {
@@ -96,7 +98,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
   //オプションメニューの画面遷移
   @Override
-  public boolean onCreateOptionsMenu(Menu menu){
+  public boolean onCreateOptionsMenu(Menu menu) {
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu, menu);
     return true;
@@ -121,7 +123,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   }
 
 
-
   double calc(int operator, double value1, double value2) {
     switch (operator) {
       case R.id.button_add:
@@ -138,26 +139,51 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   }
 
 
-
-  private void initValue(){
+  private void initValue() {
     editText.setText("0");
     recentOperator = R.id.button_equal;
     isOperatorKeyPushed = true;
     result = 0.0;
   }
 
+
   void setView() {
-    findViewById(R.id.food).setOnClickListener(this);
-    findViewById(R.id.water).setOnClickListener(this);
-    findViewById(R.id.internet).setOnClickListener(this);
-    findViewById(R.id.drive).setOnClickListener(this);
-    findViewById(R.id.wear).setOnClickListener(this);
-    findViewById(R.id.thing).setOnClickListener(this);
-    findViewById(R.id.education).setOnClickListener(this);
-    findViewById(R.id.date).setOnClickListener(this);
-    findViewById(R.id.house).setOnClickListener(this);
-    findViewById(R.id.tax).setOnClickListener(this);
-    findViewById(R.id.other).setOnClickListener(this);
+
+
+//    findViewById(R.id.food).setOnClickListener(this);
+//    findViewById(R.id.water).setOnClickListener(this);
+//    findViewById(R.id.internet).setOnClickListener(this);
+//    findViewById(R.id.drive).setOnClickListener(this);
+//    findViewById(R.id.wear).setOnClickListener(this);
+//    findViewById(R.id.thing).setOnClickListener(this);
+//    findViewById(R.id.education).setOnClickListener(this);
+//    findViewById(R.id.date).setOnClickListener(this);
+//    findViewById(R.id.house).setOnClickListener(this);
+//    findViewById(R.id.tax).setOnClickListener(this);
+//    findViewById(R.id.other).setOnClickListener(this);
+//    findViewById(R.id.button_ok).setOnClickListener(this);
+
+    View.OnClickListener buttonCategoryListener = new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Button button = (Button) v;
+        category = button.getText().toString();
+
+      }
+    };
+
+    findViewById(R.id.food).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.water).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.internet).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.drive).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.wear).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.thing).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.education).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.date).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.house).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.tax).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.other).setOnClickListener(buttonCategoryListener);
+    findViewById(R.id.button_ok).setOnClickListener(buttonCategoryListener);
 
     findViewById(R.id.button_1).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_2).setOnClickListener(buttonNumberListener);
@@ -191,9 +217,29 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     super.onCreate(savedInstanceState);
     setContentView(R.layout.calculator_layout);
 
+    MyDBHelper helper = new MyDBHelper(this);
+    final SQLiteDatabase db = helper.getWritableDatabase();
+
     editText = (EditText) findViewById(R.id.editText);
     initValue();
     setView();
+    editText = (EditText) findViewById(R.id.editText);
+
+
+    buttonok = (Button) findViewById(R.id.button_ok);
+    buttonok.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        price = Integer.parseInt(editText.getText().toString());
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category", category);
+        contentValues.put("price", price);
+        db.insert("data_table", null, contentValues);
+
+      }
+    });
 
 
   }
