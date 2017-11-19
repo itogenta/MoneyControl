@@ -6,15 +6,11 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
-import static android.widget.LinearLayout.VERTICAL;
-
 
 /**
  * Created by itougenta on 2017/11/18.
@@ -33,21 +29,17 @@ public class DataBaseActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.database_layout);
 
+
+    ScrollView scrollView = new ScrollView(this);
     LinearLayout linearLayout = new LinearLayout(this);
     linearLayout.setOrientation(LinearLayout.VERTICAL);
-    linearLayout.addView(linearLayout);
-    setContentView(linearLayout);
+    scrollView.addView(linearLayout);
+    setContentView(scrollView);
 
     MyDBHelper helper = new MyDBHelper(this);
     SQLiteDatabase db = helper.getReadableDatabase();
 
-    //textprice = (TextView) findViewById(R.id.price_text);
-    //textprice.setText(String.valueOf(db));
-    //textprice.setText(getSumTotal(db));
 
-//    category =(TextView)findViewById(R.id.category_text);
-//   // category.setText(String.valueOf(db));
-//    category.setText(getCategory(db));
     Cursor cusor = db.query("dataTable", new String[]{"category", "price"}, null, null, null, null, null);
 
     boolean mov = cusor.moveToFirst();
@@ -60,6 +52,14 @@ public class DataBaseActivity extends AppCompatActivity {
     cusor.close();
     db.close();
   }
+
+  //textprice = (TextView) findViewById(R.id.price_text);
+  //textprice.setText(String.valueOf(db));
+  //textprice.setText(getSumTotal(db));
+
+//    category =(TextView)findViewById(R.id.category_text);
+//   // category.setText(String.valueOf(db));
+//    category.setText(getCategory(db));
 
 
 //  public String getSumTotal(SQLiteDatabase db) {

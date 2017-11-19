@@ -14,9 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 
-//import static com.itou.moneycontrol.MyDBHelper.TABLE_NAME;
-
-
 public class Calculator extends AppCompatActivity implements View.OnClickListener {
 
   private EditText editText;
@@ -139,7 +136,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.item1:
-        Intent intent11 = new Intent(this, Calculator.class);
+        Intent intent11 = new Intent(this, SumActivity.class);
         startActivity(intent11);
         break;
       case R.id.item2:
@@ -181,20 +178,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
 
   void setView() {
 
-
-//    findViewById(R.id.food).setOnClickListener(this);
-//    findViewById(R.id.water).setOnClickListener(this);
-//    findViewById(R.id.internet).setOnClickListener(this);
-//    findViewById(R.id.drive).setOnClickListener(this);
-//    findViewById(R.id.wear).setOnClickListener(this);
-//    findViewById(R.id.thing).setOnClickListener(this);
-//    findViewById(R.id.education).setOnClickListener(this);
-//    findViewById(R.id.date).setOnClickListener(this);
-//    findViewById(R.id.house).setOnClickListener(this);
-//    findViewById(R.id.tax).setOnClickListener(this);
-//    findViewById(R.id.other).setOnClickListener(this);
-//    findViewById(R.id.button_ok).setOnClickListener(this);
-
     View.OnClickListener buttonCategoryListener = new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -231,20 +214,15 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
     findViewById(R.id.button_clear).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_add_sub).setOnClickListener(buttonNumberListener);
     findViewById(R.id.button_percent).setOnClickListener(buttonNumberListener);
-    //findViewById(R.id.buttonOk).setOnClickListener(buttonOperatorListener);
-
     // / * + - =
+
     findViewById(R.id.button_div).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_multiply).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_sub).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_add).setOnClickListener(buttonOperatorListener);
     findViewById(R.id.button_equal).setOnClickListener(buttonOperatorListener);
 
-
   }
-
-
-
 
   @Override
   public void onClick(View v) {

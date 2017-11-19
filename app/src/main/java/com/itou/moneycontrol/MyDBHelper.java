@@ -13,10 +13,6 @@ import static com.github.mikephil.charting.charts.Chart.LOG_TAG;
  */
 
 public class MyDBHelper extends SQLiteOpenHelper {
-  //public static final String TABLE_NAME = "dataTable";
-  //テーブル名
-//  public static final String PET_NAME_KEY = "price";
-//  public static final String PET_TYPE_KEY = "category";
 
   public MyDBHelper(Context context)
   {
