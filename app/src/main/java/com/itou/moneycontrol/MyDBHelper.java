@@ -13,15 +13,14 @@ import static com.github.mikephil.charting.charts.Chart.LOG_TAG;
  */
 
 public class MyDBHelper extends SQLiteOpenHelper {
-
-  public static final String TABLE_NAME = "data_table";
+  //public static final String TABLE_NAME = "dataTable";
   //テーブル名
-  public static final String PET_NAME_KEY = "name";
-  public static final String PET_TYPE_KEY = "type";
+//  public static final String PET_NAME_KEY = "price";
+//  public static final String PET_TYPE_KEY = "category";
 
   public MyDBHelper(Context context)
   {
-    super(context,"categoryDB",null,1);
+    super(context,"MoneyControlDB",null,1);
   }
 
   /**テーブルの初期化*/
@@ -29,14 +28,11 @@ public class MyDBHelper extends SQLiteOpenHelper {
   public void onCreate(SQLiteDatabase db)
   {
     try{
-      db.execSQL(
-              String.format(
-                      "create table %s (" +
-                              "_id integer primary key autoincrement not null, " +
-                              "category text not null" +
-                              "price integer not null"+
-                              ");",
-                      TABLE_NAME)
+      db.execSQL("create table dataTable" +
+              "(id integer primary key autoincrement not null, " +
+              "category text not null," +
+              "price integer not null"+
+              ");"
       );
     }catch(SQLiteException err){
       Log.e(LOG_TAG, "sql statement is invalid");

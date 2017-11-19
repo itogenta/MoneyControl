@@ -6,12 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+
+//import static com.itou.moneycontrol.MyDBHelper.TABLE_NAME;
 
 
 public class Calculator extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +27,35 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   private String category;
   public Button buttonok;
   private int price;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.calculator_layout);
+
+    final MyDBHelper helper = new MyDBHelper(this);
+    final SQLiteDatabase db = helper.getWritableDatabase();
+
+    setView();
+    editText = (EditText) findViewById(R.id.editText);
+    initValue();
+    buttonok = (Button) findViewById(R.id.button_ok);
+    buttonok.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        price = Integer.parseInt(editText.getText().toString());
+        Log.d("Price", "price=" + price);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category", category);
+        contentValues.put("price", price);
+        db.insert("dataTable", null, contentValues);
+
+      }
+    });
+
+
+  }
 
   View.OnClickListener buttonNumberListener = new View.OnClickListener() {
     @Override
@@ -168,7 +200,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
       public void onClick(View v) {
         Button button = (Button) v;
         category = button.getText().toString();
-
+        Log.d("category", "category=" + category);
       }
     };
 
@@ -212,37 +244,7 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
   }
 
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.calculator_layout);
 
-    MyDBHelper helper = new MyDBHelper(this);
-    final SQLiteDatabase db = helper.getWritableDatabase();
-
-    editText = (EditText) findViewById(R.id.editText);
-    initValue();
-    setView();
-    editText = (EditText) findViewById(R.id.editText);
-
-
-    buttonok = (Button) findViewById(R.id.button_ok);
-    buttonok.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-        price = Integer.parseInt(editText.getText().toString());
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("category", category);
-        contentValues.put("price", price);
-        db.insert("data_table", null, contentValues);
-
-      }
-    });
-
-
-  }
 
   @Override
   public void onClick(View v) {
