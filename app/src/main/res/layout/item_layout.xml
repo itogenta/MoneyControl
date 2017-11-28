@@ -1,68 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
 
             <Button
                 android:id="@+id/food"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="食費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
-                />
+                android:background="@drawable/button_color"
+                android:text="食費"/>
 
             <Button
                 android:id="@+id/water"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="水道光熱費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
-                />
+                android:background="@drawable/button_color"
+                android:text="水道光熱費"/>
 
             <Button
                 android:id="@+id/internet"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="通信費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_color"
+                android:text="通信費"
                 />
         </TableRow>
 
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
 
             <Button
                 android:id="@+id/drive"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/button_color"
                 android:text="交通費"
                 android:layout_weight="1"
                 />
 
             <Button
                 android:id="@+id/wear"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/button_color"
                 android:text="被服費"
                 android:layout_weight="1"
                 />
 
             <Button
                 android:id="@+id/thing"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/button_color"
                 android:text="生活雑貨・日用品"
                 android:layout_weight="1"
                 />
@@ -71,54 +78,64 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
 
             <Button
                 android:id="@+id/education"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="教育費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_color"
+                android:text="教育費"
                 />
 
             <Button
                 android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="交際費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_color"
+                android:text="交際費"
                 />
 
             <Button
                 android:id="@+id/house"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text="住宅費"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_color"
+                android:text="住宅費"
                 />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
 
             <Button
                 android:id="@+id/tax"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/button_color"
                 android:text="税金"
                 android:layout_weight="1"
                 />
 
             <Button
                 android:id="@+id/other"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:background="@drawable/button_color"
                 android:text="その他"
                 android:layout_weight="1"
                 />
         </TableRow>
 
-
-    </TableLayout>
-</LinearLayout>
+</TableLayout>
